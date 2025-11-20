@@ -178,7 +178,6 @@ begin
 
     -- CAR COUNTER - increments when cars enter parking lot
     --!!current: Incrementa il contatore quando si passa da RIGHT_PASS a IDLE (macchina entrata)
-    --!!!idea - increments when back-sensor = 1
 
     process(clk, reset_n)
     begin
@@ -192,7 +191,7 @@ begin
     end process;
     car_count <= std_logic_vector(internal_car_count);
 
-    -- 1 HZ Prescaler - Blink counter
+    -- Blink counter - ck freq
     process(clk, reset_n)
     begin
         if reset_n = '0' then
@@ -201,6 +200,7 @@ begin
             blink_counter <= blink_counter + 1;
         end if;
     end process;
+
 
     -- Output process
     process(clk)
